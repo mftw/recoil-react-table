@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useTable } from "react-table";
 import { atom as Atom, selector, useRecoilState, useResetRecoilState } from "recoil";
 
@@ -36,7 +36,6 @@ const getTotalSelector = (atoms) => {
   });
 };
 const getResetSelector = (atoms) => {
-  console.log("🚀 ~ file: Table.jsx ~ line 50 ~ getResetSelector ~ atoms", atoms);
   const key = getKey();
   return selector({
     key,
@@ -46,8 +45,6 @@ const getResetSelector = (atoms) => {
       }, 0);
     },
     set: ({ reset }, newValue) => {
-      console.log("🚀 ~ file: Table.jsx ~ line 59 ~ getResetSelector ~ newValue", newValue);
-      // const avg = newValue / atoms.length;
       if (newValue === "RESET") {
         atoms.forEach((atom) => reset(atom));
       }
@@ -61,7 +58,7 @@ function Table({ columns, data }) {
     data,
     // defaultColumn,
   });
-  console.log("🚀 ~ file: Table.jsx renders");
+  console.log("🚀 Table renders");
 
   return (
     <>
